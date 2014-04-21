@@ -1,0 +1,21 @@
+
+
+<div class="scrawl-wrapper">
+	<textarea id="{{ id }}" name='{{ name }}'>{{ value }}</textarea>
+	<div class="scrawl-toolbar">
+			<ul class="">
+				<li><a scrawl-cmd="fullscreen">Full</a></li>
+			</ul>
+	</div>
+	<div class="scrawl-content">
+		<div class="scrawl-code"></div>
+		<div class="scrawl-preview"><div></div></div>
+	</div>
+</div>
+
+{% set js %}
+$(document).ready(function() {
+	new ScrawlEditor('#{{ jsId }}');
+});
+{% endset %}
+{% includeJs js %}
