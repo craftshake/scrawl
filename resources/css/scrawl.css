@@ -3,92 +3,67 @@
 .scrawl-wrapper {
   padding: 6px 7px 0;
   background: #fff;
-  border: 1px solid #ccc; border-radius: 3px; 
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 rgba(55, 156, 219, 0); 
-  -webkit-transition: border linear 300ms, -webkit-box-shadow linear 100ms; 
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 rgba(55, 156, 219, 0); 
+  border: 1px solid #ccc; border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 rgba(55, 156, 219, 0);
+  -webkit-transition: border linear 300ms, -webkit-box-shadow linear 100ms;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 rgba(55, 156, 219, 0);
   -moz-transition: border linear 100ms, box-shadow linear 100ms;
 }
 
-/* Handle fullscreen */
-.scrawl-wrapper.fullscreen {
+.scrawl-content {
+  padding-bottom: 5px;
+}
+
+/*
+ * Content clearfix
+ */
+.scrawl-content:before,
+.scrawl-content:after {
+  content: " ";
+  display: table;
+}
+.scrawl-content:after {
+  clear: both;
+}
+
+.scrawl-code, .scrawl-preview {
+  width: 50%;
+  float: left;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.scrawl-preview {
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.scrawl-code {
+  border-right: 1px solid #ddd;
+}
+
+/* Fullscreen */
+.scrawl-fullscreen {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2000;
-  overflow: hidden;
-  width: 100%;  
-}
-
-.scrawl-wrapper.fullscreen .preview {
-  display: block;
-  width: 45%;
-  left: 50%;
-  top: 40px;
-  position: absolute;
-  padding: 10px;
-  border-left: 1px dotted #ddd;
-  overflow: auto;
-}
-
-.scrawl-wrapper.fullscreen .CodeMirror {
-  display: block;
-  width: 50%;
-  left: 0;
-  top: 40px;
-  position: fixed;
-}
-
-.scrawl-wrapper.fullscreen .scrawl-toolbar {
-  position: fixed;
-  width: 98%;
-}
-
-.scrawl-wrapper.fullscreen .scrawl-toolbar li a.icon-fullscreen 
-{ 
-  background-position: -225px; 
-}
-
-.scrawl-wrapper.fullscreen .editor-statusbar {
-  position: fixed;
+  right: 0;
   bottom: 0;
-  right: 50%;
-  width: 50%;
+  z-index: 990;
 }
 
-.scrawl-wrapper .preview {
-  display: none;
-}
-
-.scrawl-wrapper textarea {
-  opacity: 0;
-  height: 0;
-}
-
-.scrawl-loading {
-  padding-bottom: 15px;
-  margin-top: -10px;
-}
-
-/* Fix scrollbars ! */
-
-.scrawl-wrapper .CodeMirror-vscrollbar {
-  overflow-y: hidden;
-}
-
-.scrawl-wrapper.fullscreen .CodeMirror-vscrollbar {
-  overflow-y: auto;
-}
-
-.scrawl-wrapper.fullscreen .CodeMirror-scroll {
-  overflow: auto;
-  margin-right: 0;
+.scrawl-fullscreen .scrawl-content {
+  position: absolute;
+  top: 40px;
+  left: 5px;
+  right: 0;
+  bottom: 0;
 }
 
 /* Toolbar */
 
 .scrawl-toolbar {
-  border-bottom: 1px dotted #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .scrawl-toolbar:after {
@@ -107,17 +82,9 @@
   list-style: none !important;
 }
 
-.scrawl-toolbar li.right {
+.scrawl-toolbar .scrawl-right {
   float: none;
   float: right !important;
-}
-
-.scrawl-toolbar li.separator {
-  padding: 0;
-  margin: 7px 2px 0 3px !important;
-  height: 19px;
-  border-left: 1px dotted #ddd;
-  border-right: none;
 }
 
 .scrawl-toolbar a {
@@ -148,12 +115,12 @@
 /* buttons */
 .scrawl-toolbar li a.icon-bold            { background-position: 0px; }
 .scrawl-toolbar li a.icon-italic          { background-position: -25px; }
-.scrawl-toolbar li a.icon-unordered-list   { background-position: -50px; }
-.scrawl-toolbar li a.icon-ordered-list     { background-position: -75px; }
-.scrawl-toolbar li a.icon-image           { background-position: -100px; }
+.scrawl-toolbar li a.icon-unordered-list  { background-position: -50px; }
+.scrawl-toolbar li a.icon-ordered-list    { background-position: -75px; }
+.scrawl-toolbar li a.icon-picture         { background-position: -100px; }
 .scrawl-toolbar li a.icon-link            { background-position: -125px; }
 .scrawl-toolbar li a.icon-horizontalrule  { background-position: -150px; }
-.scrawl-toolbar li a.icon-deleted         { background-position: -175px; }
+.scrawl-toolbar li a.icon-strikethrough   { background-position: -175px; }
 .scrawl-toolbar li a.icon-fullscreen      { background-position: -200px; }
 .scrawl-toolbar li a.icon-normalscreen    { background-position: -225px; }
 .scrawl-toolbar li a.icon-h1              { background-position: -250px; }
@@ -163,41 +130,10 @@
 .scrawl-toolbar li a.icon-undo            { background-position: -350px; }
 .scrawl-toolbar li a.icon-redo            { background-position: -375px; }
 
-.scrawl-toolbar li a.icon-deleted      { background-position: -500px; }
-
-.scrawl-toolbar li a.icon-outdent      { background-position: -150px; }
-.scrawl-toolbar li a.icon-indent         { background-position: -175px; }
-
-.scrawl-toolbar li a.icon-video        { background-position: -225px; }
-.scrawl-toolbar li a.icon-file       { background-position: -250px; }
-.scrawl-toolbar li a.icon-table        { background-position: -275px; }
-
-.scrawl-toolbar li a.icon-fontcolor      { background-position: -325px; }
-.scrawl-toolbar li a.icon-backcolor      { background-position: -350px; }
-.scrawl-toolbar li a.icon-alignleft        { background-position: -375px; }
-.scrawl-toolbar li a.icon-aligncenter    { background-position: -400px; }
-.scrawl-toolbar li a.icon-alignright       { background-position: -425px; }
-.scrawl-toolbar li a.icon-justify      { background-position: -450px; }
-
-.scrawl-toolbar li a.icon-underline      { background-position: -525px; }
-
-.scrawl-toolbar li a.icon-clips        { background-position: -600px; }
-
-.scrawl-toolbar li a.icon-alignment      { background-position: -625px; }
-
-.scrawl-toolbar li a.icon-fontfamily     { background-position: -650px; }
-.scrawl-toolbar li a.icon-fontsize     { background-position: -675px; }
-
-.scrawl-toolbar li a.icon-direction      { background-position: -700px; }
-.scrawl-toolbar li a.icon-lists        { background-position: -725px; }
-.scrawl-toolbar li a.icon-font       { background-position: -750px; }
-
-.scrawl-toolbar li a.icon-pre        { background-position: -875px; }
-
 
 /* Status bar */
 
-.editor-statusbar {
+/*.editor-statusbar {
   border-top: 1px dotted #ddd;
   padding: 8px 10px;
   font-size: 12px;
@@ -214,7 +150,7 @@
 }
 .editor-statusbar .words:before {
   content: 'words: ';
-}
+}*/
 
 /* BASICS */
 
