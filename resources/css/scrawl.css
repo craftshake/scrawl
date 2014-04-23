@@ -82,6 +82,14 @@
   list-style: none !important;
 }
 
+.scrawl-toolbar li.scrawl-separator {
+  padding: 0;
+  margin: 5px 2px 0 3px !important;
+  height: 19px;
+  border-left: 1px dotted #ddd;
+  border-right: none;
+}
+
 .scrawl-toolbar .scrawl-right {
   float: none;
   float: right !important;

@@ -68,10 +68,11 @@ var ScrawlEditor = Garnish.Base.extend(
 		var bar = [];
 
 		this.options.toolbar.forEach(function(cmd){
-			if(ScrawlEditor.commands[cmd]) {
-
+			if (cmd == '|') {
+				bar.push('<li class="scrawl-separator"></li>');
+			}
+			else if(ScrawlEditor.commands[cmd]) {
 			   var title = ScrawlEditor.commands[cmd].title ? ScrawlEditor.commands[cmd].title : cmd;
-
 			   bar.push('<li><a data-scrawl-cmd="'+cmd+'" title="'+title+'" class="icon-'+ ScrawlEditor.commands[cmd].label +'"></a></li>');
 
 			   // @TODO register shortcut
@@ -112,7 +113,7 @@ var ScrawlEditor = Garnish.Base.extend(
 		"height"       	: 400,
 		"maxsplitsize" 	: 1000,
 		"codemirror"   	: { mode: 'markdown', theme: 'paper', tabMode: 'indent', tabindex: "2", lineWrapping: true, dragDrop: false, extraKeys: {"Enter": 'newlineAndIndentContinueMarkdownList'} },
-		"toolbar"      	: [ "h1", "h2", "h3", "bold", "italic", "strike", "link", "picture", "blockquote", "listUl", "listOl" ],
+		"toolbar"      	: [ "h1", "h2", "h3", "|", "bold", "italic", "strike", "|", "link", "picture", "blockquote", "listUl", "listOl", "|", "undo", "redo" ],
 	},
 
 	replacer: function(replace, editor){
@@ -225,6 +226,22 @@ var ScrawlEditor = Garnish.Base.extend(
 			"label"  : 'ordered-list',
 			"action" : function(editor){
 				ScrawlEditor.replacer("1. $1", editor);
+			}
+		},
+		"undo" : {
+			"title"  : "Undo action",
+			"label"  : 'undo',
+			"action" : function(editor){
+				editor.undo();
+				editor.focus();
+			}
+		},
+		"redo" : {
+			"title"  : "Redo action",
+			"label"  : 'redo',
+			"action" : function(editor){
+				editor.redo();
+				editor.focus();
 			}
 		}
 	}
