@@ -99,7 +99,7 @@ var ScrawlEditor = Garnish.Base.extend(
 		}
 		else {
 			this.$wrapper.removeClass('scrawl-mobile');
-			this.$content.toggleClass('preview-mode');
+			this.$content.removeClass('preview-mode');
 		}
 
 		this.editor.refresh();
