@@ -30,7 +30,8 @@
 .scrawl-wrapper .scrawl-preview h1, .scrawl-wrapper .scrawl-preview h2, .scrawl-wrapper .scrawl-preview h3, .scrawl-wrapper .scrawl-preview h4, .scrawl-wrapper .scrawl-preview h5, .scrawl-wrapper .scrawl-preview h6 {
   font-weight: normal;
   color: #111;
-  line-height: 1em; }
+  line-height: 1em;
+  margin-bottom: 10px; }
 .scrawl-wrapper .scrawl-preview h4, .scrawl-wrapper .scrawl-preview h5, .scrawl-wrapper .scrawl-preview h6 {
   font-weight: bold; }
 .scrawl-wrapper .scrawl-preview h1 {

@@ -94,6 +94,13 @@ var ScrawlEditor = Garnish.Base.extend(
 	_fit: function() {
 
 		// @TODO handle mobile
+		if (this.$wrapper.width() < ScrawlEditor.defaults.maxsplitsize) {
+			this.$wrapper.addClass('scrawl-mobile');
+		}
+		else {
+			this.$wrapper.removeClass('scrawl-mobile');
+			this.$content.toggleClass('preview-mode');
+		}
 
 		this.editor.refresh();
 		this.$preview.parent().css("height", this.$code.height());
@@ -111,7 +118,7 @@ var ScrawlEditor = Garnish.Base.extend(
 
 	defaults: {
 		"height"       	: 400,
-		"maxsplitsize" 	: 1000,
+		"maxsplitsize" 	: 650,
 		"codemirror"   	: { mode: 'markdown', theme: 'paper', tabMode: 'indent', tabindex: "2", lineWrapping: true, dragDrop: false, extraKeys: {"Enter": 'newlineAndIndentContinueMarkdownList'} },
 		"toolbar"      	: [ "h1", "h2", "h3", "|", "bold", "italic", "strike", "|", "link", "picture", "blockquote", "listUl", "listOl", "|", "undo", "redo" ],
 	},
@@ -121,6 +128,7 @@ var ScrawlEditor = Garnish.Base.extend(
             markdown = replace.replace('$1', text);
 
         editor.replaceSelection(markdown, 'end');
+        editor.focus();
     },
 
 	commands: {
@@ -140,10 +148,16 @@ var ScrawlEditor = Garnish.Base.extend(
 			}
 		},
 		"h3" : {
-			"title"  : "Samller title",
+			"title"  : "Smaller title",
 			"label"  : 'h3',
 			"action" : function(editor){
 				ScrawlEditor.replacer("### $1", editor);
+			}
+		},
+		"preview" : {
+			"title"  : "Preview",
+			"action" : function(editor){
+				editor.scrawl.$content.toggleClass('preview-mode');
 			}
 		},
 		"fullscreen": {
