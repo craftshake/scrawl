@@ -120,7 +120,7 @@ var ScrawlEditor = Garnish.Base.extend(
 		"height"       	: 400,
 		"maxsplitsize" 	: 650,
 		"codemirror"   	: { mode: 'markdown', theme: 'paper', tabMode: 'indent', tabindex: "2", lineWrapping: true, dragDrop: false, extraKeys: {"Enter": 'newlineAndIndentContinueMarkdownList'} },
-		"toolbar"      	: [ "h1", "h2", "h3", "|", "bold", "italic", "strike", "|", "link", "picture", "blockquote", "listUl", "listOl", "|", "undo", "redo" ],
+		"toolbar"      	: [ "h1", "h2", "h3", "bold", "italic", "strike", "|", "link", "picture", "blockquote", "listUl", "listOl", "|", "undo", "redo" ],
 	},
 
 	replacer: function(replace, editor){
@@ -133,7 +133,7 @@ var ScrawlEditor = Garnish.Base.extend(
 
 	commands: {
 
-		"h1" : {
+		/*"h1" : {
 			"title"  : "Title",
 			"label"  : 'h1',
 			"action" : function(editor){
@@ -153,16 +153,17 @@ var ScrawlEditor = Garnish.Base.extend(
 			"action" : function(editor){
 				ScrawlEditor.replacer("### $1", editor);
 			}
-		},
+		},*/
 		"preview" : {
 			"title"  : "Preview",
+			"label"  : "eye",
 			"action" : function(editor){
 				editor.scrawl.$content.toggleClass('preview-mode');
 			}
 		},
 		"fullscreen": {
 			"title"  : 'Fullscreen',
-			"label"  : 'fullscreen',
+			"label"  : 'expand',
 			"action" : function(editor){
 				editor.scrawl.$wrapper.toggleClass("scrawl-fullscreen");
 
@@ -209,7 +210,7 @@ var ScrawlEditor = Garnish.Base.extend(
 		},
 		"blockquote" : {
 			"title"  : "Blockquote",
-			"label"  : 'quote',
+			"label"  : 'quote-left',
 			"action" : function(editor){
 				ScrawlEditor.replacer("> $1", editor);
 			}
@@ -223,21 +224,21 @@ var ScrawlEditor = Garnish.Base.extend(
 		},
 		"picture" : {
 			"title"  : "Picture",
-			"label"  : 'picture',
+			"label"  : 'photo',
 			"action" : function(editor){
 				ScrawlEditor.replacer("![$1](http://)", editor);
 			}
 		},
 		"listUl" : {
 			"title"  : "Unordered List",
-			"label"  : 'unordered-list',
+			"label"  : 'list-unordered',
 			"action" : function(editor){
 				ScrawlEditor.replacer("* $1", editor);
 			}
 		},
 		"listOl" : {
 			"title"  : "Ordered List",
-			"label"  : 'ordered-list',
+			"label"  : 'list-ordered',
 			"action" : function(editor){
 				ScrawlEditor.replacer("1. $1", editor);
 			}

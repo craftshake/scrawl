@@ -1,17 +1,7 @@
 /* Scrawl Editor */
 
 .scrawl-wrapper {
-  padding: 6px 7px 0;
   background: #fff;
-  border: 1px solid #ccc; border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 rgba(55, 156, 219, 0);
-  -webkit-transition: border linear 300ms, -webkit-box-shadow linear 100ms;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 rgba(55, 156, 219, 0);
-  -moz-transition: border linear 100ms, box-shadow linear 100ms;
-}
-
-.scrawl-content {
-  padding-bottom: 5px;
 }
 
 /*
@@ -35,11 +25,12 @@
 
 .scrawl-preview {
   overflow-y: scroll;
-  padding: 5px;
+  padding: 10px;
 }
 
 .scrawl-code {
   border-right: 1px solid #ddd;
+  padding: 5px;
 }
 
 /* Mobile */
@@ -78,11 +69,12 @@
   right: 0;
   bottom: 0;
   z-index: 990;
+  border-radius: 0;
 }
 
 .scrawl-fullscreen .scrawl-content {
   position: absolute;
-  top: 40px;
+  top: 30px;
   left: 5px;
   right: 0;
   bottom: 0;
@@ -105,10 +97,10 @@
 .scrawl-toolbar li {
   float: left !important;
   margin: 0 !important;
-  padding: 1px 0 3px 1px;
   outline: none;
   list-style: none !important;
 }
+
 .scrawlbar-preview {
   display: none;
 }
@@ -127,32 +119,28 @@
 }
 
 .scrawl-toolbar a {
-  width: 25px;
-  height: 25px;
   outline: none;
-  border: 1px solid transparent;
   text-decoration: none;
-  font-size: 0;
-  line-height: 0;
   cursor: pointer;
-  zoom: 1;
-  *border: 1px solid #eee;
   display: block;
-  background-image: url('../images/buttons.png');
   background-position: 0;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
+  padding: 8px 0;
+  width: 32px;
+  text-align: center;
+  color: #29323d;
 }
 
 .scrawl-toolbar a:hover {
-  border-radius: 3px;
-  border: 1px solid #d4d4d4;
-  background-color: #e8e8e8;
-  outline: none;
+  background-color: #d5d8dd;
+}
+
+.scrawl-toolbar a:active {
+  background-color: #737f8c;
+  color: #fff;
 }
 
 /* buttons */
-.scrawl-toolbar li a.icon-bold            { background-position: 0px; }
+/*.scrawl-toolbar li a.icon-bold            { background-position: 0px; }
 .scrawl-toolbar li a.icon-italic          { background-position: -25px; }
 .scrawl-toolbar li a.icon-unordered-list  { background-position: -50px; }
 .scrawl-toolbar li a.icon-ordered-list    { background-position: -75px; }
@@ -167,7 +155,7 @@
 .scrawl-toolbar li a.icon-h3              { background-position: -300px; }
 .scrawl-toolbar li a.icon-quote           { background-position: -325px; }
 .scrawl-toolbar li a.icon-undo            { background-position: -350px; }
-.scrawl-toolbar li a.icon-redo            { background-position: -375px; }
+.scrawl-toolbar li a.icon-redo            { background-position: -375px; }*/
 
 
 /* Status bar */
@@ -400,4 +388,77 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   .CodeMirror div.CodeMirror-cursor {
     visibility: hidden;
   }
+}
+
+/* Icon styles */
+
+@font-face {
+  font-family: 'scrawlfont';
+  src:url('fonts/icomoon.eot');
+  src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.woff') format('woff'),
+    url('fonts/icomoon.ttf') format('truetype'),
+    url('fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'scrawlfont';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eye:before {
+  content: "\f04e";
+}
+.icon-link:before {
+  content: "\f05c";
+}
+.icon-list-ordered:before {
+  content: "\f062";
+}
+.icon-list-unordered:before {
+  content: "\f061";
+}
+.icon-markdown:before {
+  content: "\f0c9";
+}
+.icon-undo:before {
+  content: "\e602";
+}
+.icon-redo:before {
+  content: "\e603";
+}
+.icon-expand:before {
+  content: "\e605";
+}
+.icon-contract:before {
+  content: "\e606";
+}
+.icon-bold:before {
+  content: "\f032";
+}
+.icon-italic:before {
+  content: "\f033";
+}
+.icon-photo:before {
+  content: "\f03e";
+}
+.icon-pencil:before {
+  content: "\f040";
+}
+.icon-strikethrough:before {
+  content: "\f0cc";
+}
+.icon-quote-left:before {
+  content: "\f10d";
 }

@@ -58,6 +58,7 @@ class Scrawl_MarkdownFieldType extends BaseFieldType
         craft()->templates->includeCssResource('scrawl/css/scrawl.css');
         craft()->templates->includeCssResource('scrawl/css/preview.css');
 
+
         $id = craft()->templates->formatInputId($name);
 
         return craft()->templates->render('scrawl/input', array(
