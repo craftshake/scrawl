@@ -156,16 +156,19 @@ var ScrawlEditor = Garnish.Base.extend(
 		},*/
 		"preview" : {
 			"title"  : "Preview",
-			"label"  : "eye",
 			"action" : function(editor){
 				editor.scrawl.$content.toggleClass('preview-mode');
+				this.$toolbar.find('.scrawlbar-preview a:first').toggleClass('icon-eye');
+				this.$toolbar.find('.scrawlbar-preview a:first').toggleClass('icon-pencil');
 			}
 		},
 		"fullscreen": {
 			"title"  : 'Fullscreen',
-			"label"  : 'expand',
 			"action" : function(editor){
 				editor.scrawl.$wrapper.toggleClass("scrawl-fullscreen");
+
+				this.$toolbar.find('.scrawlbar-full a:first').toggleClass('icon-expand');
+				this.$toolbar.find('.scrawlbar-full a:first').toggleClass('icon-contract');
 
 				var wrap = editor.getWrapperElement();
 
