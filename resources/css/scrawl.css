@@ -84,7 +84,7 @@
 /* Toolbar */
 
 .scrawl-toolbar {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 .scrawl-toolbar:after {
@@ -129,6 +129,10 @@
   width: 32px;
   text-align: center;
   color: #29323d;
+}
+
+.scrawl-toolbar li:first-child a {
+  border-top-left-radius: 2px;
 }
 
 .scrawl-toolbar a:hover {
@@ -187,7 +191,6 @@
   min-height: 150px;
   height: auto;
   line-height: 1.6em;
-  padding-top: 5px;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
@@ -412,6 +415,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  font-size: 13px;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
