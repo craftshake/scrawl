@@ -1,7 +1,8 @@
 /* Scrawl Editor */
 
-.scrawl-wrapper {
+.input .scrawl-wrapper {
   background: #fff;
+  z-index: 100 !important;
 }
 
 /*
