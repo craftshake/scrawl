@@ -3,7 +3,7 @@
 /**
  * Scrawl is a simple markdown plugin for Craft CMS providing a fieldtype and a twig filter.
  *
- * @package   Craft Scrawl
+ * @package   Scrawl
  * @author    Mario Friz
  */
 
@@ -19,7 +19,7 @@ class ScrawlPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     public function getDeveloper()

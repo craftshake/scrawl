@@ -2,7 +2,6 @@
 
 .input .scrawl-wrapper {
   background: #fff;
-  z-index: 100 !important;
 }
 
 /*
@@ -63,17 +62,17 @@
 }
 
 /* Fullscreen */
-.scrawl-fullscreen {
+.scrawl-wrapper.scrawl-fullscreen {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 990;
+  z-index: 990 !important;
   border-radius: 0;
 }
 
-.scrawl-fullscreen .scrawl-content {
+.scrawl-wrapper.scrawl-fullscreen .scrawl-content {
   position: absolute;
   top: 30px;
   left: 5px;

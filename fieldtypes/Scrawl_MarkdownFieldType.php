@@ -3,7 +3,7 @@
 /**
  * Scrawl is a simple markdown plugin for Craft CMS providing a fieldtype and a twig filter.
  *
- * @package   Craft Scrawl
+ * @package   Scrawl
  * @author    Mario Friz
  */
 
@@ -44,7 +44,7 @@ class Scrawl_MarkdownFieldType extends BaseFieldType
         craft()->templates->includeJsResource('scrawl/js/marked.js');
 
         // Load up codemirror
-        craft()->templates->includeJsResource('scrawl/js/codemirror/codemirror-compressed.js');
+        craft()->templates->includeJsResource('scrawl/js/codemirror-compressed.js');
 
         // Load custom JS
         craft()->templates->includeJsResource('scrawl/js/scrawl.js');
@@ -53,7 +53,7 @@ class Scrawl_MarkdownFieldType extends BaseFieldType
         craft()->templates->includeCssResource('scrawl/css/scrawl.css');
         craft()->templates->includeCssResource('scrawl/css/preview.css');
 
-
+        // Prepare input id
         $id = craft()->templates->formatInputId($name);
 
         return craft()->templates->render('scrawl/input', array(

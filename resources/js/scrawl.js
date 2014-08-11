@@ -108,14 +108,18 @@ var ScrawlEditor = Garnish.Base.extend(
 
 	_updatePreview: function() {
 		var value = this.editor.getValue();
+
+		// Parse markdown to HTML
 		var parsed = marked(String(value));
+
+		// Set preview content
 		this.$preview.html(parsed);
+
+		// Update the field
 		this.$element.val(value);
 	}
-
 },
 {
-
 	defaults: {
 		"height"       	: 400,
 		"maxsplitsize" 	: 650,
@@ -124,36 +128,14 @@ var ScrawlEditor = Garnish.Base.extend(
 	},
 
 	replacer: function(replace, editor){
-        var text     = editor.getSelection(),
-            markdown = replace.replace('$1', text);
+		var text     = editor.getSelection(),
+			markdown = replace.replace('$1', text);
 
-        editor.replaceSelection(markdown, 'end');
-        editor.focus();
-    },
+		editor.replaceSelection(markdown, 'end');
+		editor.focus();
+	},
 
 	commands: {
-
-		/*"h1" : {
-			"title"  : "Title",
-			"label"  : 'h1',
-			"action" : function(editor){
-				ScrawlEditor.replacer("# $1", editor);
-			}
-		},
-		"h2" : {
-			"title"  : "Small title",
-			"label"  : 'h2',
-			"action" : function(editor){
-				ScrawlEditor.replacer("## $1", editor);
-			}
-		},
-		"h3" : {
-			"title"  : "Smaller title",
-			"label"  : 'h3',
-			"action" : function(editor){
-				ScrawlEditor.replacer("### $1", editor);
-			}
-		},*/
 		"preview" : {
 			"title"  : "Preview",
 			"action" : function(editor){
@@ -173,11 +155,13 @@ var ScrawlEditor = Garnish.Base.extend(
 				var wrap = editor.getWrapperElement();
 
 				if(editor.scrawl.$wrapper.hasClass("scrawl-fullscreen")) {
+					// We are fullscreen
 					editor.state.fullScreenRestore = {scrollTop: window.pageYOffset, scrollLeft: window.pageXOffset, width: wrap.style.width, height: wrap.style.height};
 					wrap.style.width  = "";
 					wrap.style.height = editor.scrawl.$content.height()+"px";
 					document.documentElement.style.overflow = "hidden";
 				} else {
+					// We are back to normal
 					document.documentElement.style.overflow = "";
 					var info = editor.state.fullScreenRestore;
 					wrap.style.width = info.width; wrap.style.height = info.height;
@@ -263,5 +247,4 @@ var ScrawlEditor = Garnish.Base.extend(
 			}
 		}
 	}
-
 });
